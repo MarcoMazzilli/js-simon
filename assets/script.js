@@ -16,6 +16,16 @@ btnStart.addEventListener("click", function(){
   const numbers = generateRandomNumbers(livello);
 
   console.log(numbers);
+
+  for (let i = 0 ; i < numbers.length; i++) {
+    
+    OUTPUT.innerHTML += `<h3 class="fw-bolder">${numbers[i]}</h3>`;
+  }
+
+  setTimeout( function(){
+    OUTPUT.innerHTML = [];
+    
+  },5000)
 })
 
 
