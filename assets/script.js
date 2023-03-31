@@ -1,24 +1,39 @@
 // ===================
 //      GLOBAL
 // ===================
-
-
-
+const btnStart          = document.getElementById("btnStart");
+const OUTPUT            = document.getElementById("numbersContainerOutput");
 
 // ===================
 //      EVENTS
 // ===================
 
 
+btnStart.addEventListener("click", function(){
+  
+  const livello = document.querySelector("select").value
+
+  const numbers = generateRandomNumbers(livello);
+
+  console.log(numbers);
+})
 
 
 // ===================
 //      FUNCTION
 // ===================
 
-function generateRandomNumbers(max) { //Max sarà determinato dal livello.
+function generateRandomNumbers(livello) {     //Max sarà determinato dal livello.
 
-  const randomNumber = Math.floor(Math.random()* max - 1 + 1) + 1
+  const numeri = []; //Questo è l'array che contiente i numeri.
+  
+  while (numeri.length < livello) {
+    
+    const numero = Math.floor(Math.random()* 100 - 1 + 1) + 1;
 
-  return randomNumber
+    if (!numeri.includes(numero)) numeri.push(numero);
+
+  }
+
+  return numeri;
 }
