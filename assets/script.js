@@ -3,7 +3,7 @@
 // ===================
 const btnStart          = document.getElementById("btnStart");
 const OUTPUT            = document.getElementById("numbersContainerOutput");
-const numeriInseriti    =[];
+const numeriInseriti    = [];
 // ===================
 //      EVENTS
 // ===================
@@ -13,7 +13,7 @@ btnStart.addEventListener("click", function(){
   
   const livello = document.querySelector("select").value
 
-  const numeriGenerati = generateRandomNumbers(livello);
+  numeriGenerati = generateRandomNumbers(livello);
 
   console.log('numeriGenerati',numeriGenerati);
 
@@ -25,15 +25,36 @@ btnStart.addEventListener("click", function(){
   setTimeout( function(){
     OUTPUT.innerHTML = [];
 
-    for (let i = 0 ; i < numeriGenerati.length; i++){
+    while (numeriInseriti.length < numeriGenerati.length) {
+      const numeroInserito = prompt("Inserisci un numero")
 
-       const numeroInserito = parseInt(prompt("Inserisci un numero"))
+      if (isNaN(numeroInserito)) {
+       console.warn("non e un numero")
+      }else{
+         numeriInseriti.push(numeroInserito)
+         console.log("questo e un numero")
+      }
+   }
 
-       numeriInseriti.push(numeroInserito)
+
+
+
+    let counter = 0;
+  
+   for (let i = 0; i < numeriGenerati.length; i++) {
+     if (!numeriGenerati.includes(numeriInseriti[i])){
+      continue
+     }else{
+       counter++
+      }
+      
     }
-
     console.log("numeriInseriti",numeriInseriti)
+    console.log('punteggio',counter)
   },5000)
+
+
+
 })
 
 
