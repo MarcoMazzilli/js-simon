@@ -3,7 +3,7 @@
 // ===================
 const btnStart          = document.getElementById("btnStart");
 const OUTPUT            = document.getElementById("numbersContainerOutput");
-
+const numeriInseriti    =[];
 // ===================
 //      EVENTS
 // ===================
@@ -13,18 +13,26 @@ btnStart.addEventListener("click", function(){
   
   const livello = document.querySelector("select").value
 
-  const numbers = generateRandomNumbers(livello);
+  const numeriGenerati = generateRandomNumbers(livello);
 
-  console.log(numbers);
+  console.log('numeriGenerati',numeriGenerati);
 
-  for (let i = 0 ; i < numbers.length; i++) {
+  for (let i = 0 ; i < numeriGenerati.length; i++) {
     
-    OUTPUT.innerHTML += `<h3 class="fw-bolder">${numbers[i]}</h3>`;
+    OUTPUT.innerHTML += `<h3 class="fw-bolder">${numeriGenerati[i]}</h3>`;
   }
 
   setTimeout( function(){
     OUTPUT.innerHTML = [];
-    
+
+    for (let i = 0 ; i < numeriGenerati.length; i++){
+
+       const numeroInserito = parseInt(prompt("Inserisci un numero"))
+
+       numeriInseriti.push(numeroInserito)
+    }
+
+    console.log("numeriInseriti",numeriInseriti)
   },5000)
 })
 
