@@ -11,9 +11,9 @@ const numeriIndovinati  = [];
 // ===================
 
 
-btnStart.addEventListener("click", function(){
-
-  numeriInseriti = [];
+btnStart.addEventListener("click", function(){ //click del btn start
+  //Questa potrebbe essere una funzione di reset
+  numeriInseriti = "";
   OUTPUT.innerHTML = "";
   
   const livello = document.querySelector("select").value
@@ -30,17 +30,10 @@ btnStart.addEventListener("click", function(){
   setTimeout( function(){
     OUTPUT.innerHTML = [];
       numeriInseriti = [];
-    while (numeriInseriti.length < numeriGenerati.length) {
-      const numeroInserito = prompt("Inserisci un numero")
+    
 
-      if (isNaN(numeroInserito)) {
-       console.warn("is not a number")
-      }else{
-         numeriInseriti.push(parseInt(numeroInserito))
-         console.log("yes is a number")
-         console.log(numeriInseriti)
-      }
-   }
+     //Questa potrebbe essere una funzione che richiede i dati all' utete 
+    inserimentoDati();
 
 
     let counter = 0;
@@ -70,6 +63,7 @@ btnStart.addEventListener("click", function(){
 //      FUNCTION
 // ===================
 
+//Generazione numero random con range
 function generateRandomNumbers(livello) {     //Max sarà determinato dal livello.
 
   const numeri = []; //Questo è l'array che contiente i numeri.
@@ -83,4 +77,21 @@ function generateRandomNumbers(livello) {     //Max sarà determinato dal livell
   }
 
   return numeri;
+}
+
+
+//Richiesta dati utente
+function inserimentoDati () {
+  
+  while (numeriInseriti.length < numeriGenerati.length) {
+    const numeroInserito = prompt("Inserisci un numero")
+    
+    if (isNaN(numeroInserito)) {
+      console.warn("is not a number")
+    }else{
+      numeriInseriti.push(parseInt(numeroInserito))
+      console.log("yes is a number")
+      console.log(numeriInseriti)
+    }
+  }
 }
